@@ -19,38 +19,35 @@ import com.example.instagramcloneapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    internal  var selectedFragment: Fragment? = null
 
+    //This is our button bar navigation function
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.nav_home -> {
-                selectedFragment = HomeFragment()
+                moveToFragment(HomeFragment())
+                return@OnNavigationItemSelectedListener true
             }
             R.id.nav_search -> {
-                selectedFragment = SearchFragment()
+                moveToFragment(SearchFragment())
+                return@OnNavigationItemSelectedListener true
             }
             R.id.nav_add_post -> {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_notifications -> {
-                selectedFragment = NotificationsFragment()
+                moveToFragment(NotificationsFragment())
+                return@OnNavigationItemSelectedListener true
             }
             R.id.nav_profile -> {
-                selectedFragment = ProfileFragment()
+                moveToFragment(ProfileFragment())
+                return@OnNavigationItemSelectedListener true
             }
         }
 
-        if (selectedFragment != null) {
-
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragment_container,
-                selectedFragment!!
-            ).commit()
-
-        }
         false
     }
 
+    //This on create represents whenever we application starts needs the next functions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,9 +56,15 @@ class MainActivity : AppCompatActivity() {
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-        supportFragmentManager.beginTransaction().replace(
-            R.id.fragment_container,
-            HomeFragment()
-        ).commit()
+        moveToFragment(HomeFragment())
+    }
+
+    //This is a function that we created
+    private fun moveToFragment(fragment: Fragment) {
+
+        val fragmentTrans = supportFragmentManager.beginTransaction()
+        fragmentTrans.replace(R.id.fragment_container, fragment)
+        fragmentTrans.commit()
+
     }
 }
