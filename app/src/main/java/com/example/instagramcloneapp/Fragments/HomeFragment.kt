@@ -12,6 +12,7 @@ import com.example.instagramcloneapp.R
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+/** Fragment with any alteration **/
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to

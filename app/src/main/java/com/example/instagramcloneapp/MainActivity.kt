@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity() {
         moveToFragment(HomeFragment())
     }
 
-    //This is a function that we created
+    //This is a function that we created to move between and notify our app to change the button bar active icon
+    //the app will catch it the block of the function of bar navigation in moveToFragment
     private fun moveToFragment(fragment: Fragment) {
 
         val fragmentTrans = supportFragmentManager.beginTransaction()
