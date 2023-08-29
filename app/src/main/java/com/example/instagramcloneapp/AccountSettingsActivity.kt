@@ -161,7 +161,7 @@ class AccountSettingsActivity : AppCompatActivity() {
                 progressDialog.setMessage("Please wait, we are updating your profile...")
                 progressDialog.show()
 
-                val fileRef = storageProfilePicRef!!.child(firebaseUser!!.uid + "jpg")
+                val fileRef = storageProfilePicRef!!.child(firebaseUser!!.uid + ".jpg")
 
                 var uploadTask: StorageTask<*>
                 uploadTask = fileRef.putFile(imageUri!!)
